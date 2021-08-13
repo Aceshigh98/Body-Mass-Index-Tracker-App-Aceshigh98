@@ -1,68 +1,447 @@
 <!--
-  Assignment: 
-  Author: 
-  Date: 
-  Purpose: 
+  Assignment: Week 5 BMI Traacker
+  Author: Brannon Cotherman
+  Date: 08/04/21
+  Purpose: To build a convenient and easy way to track an individuals BMI.
 -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Change Me</title>
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Tracker</title>
 
-    <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  </head>
-  <body>
-    <!-- TODO: Login Page -->
-    <div data-role="page">
-      <div data-role="header">
-        <h1>Sample Heading</h1>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="scripts/bootstrap.js"></script>
+</head>
+
+<body>
+  <!-- TODO: Login Page -->
+  <div data-role="page" id="login-page" class="login-page">
+    <div data-role="header" data-theme="b">
+      <h1>Login</h1>
+      <a href="#page-password" data-role="button" data-icon="lock" iconpos="left" data-inline="true">Create Password</a>
+      <a href="#page-forgot-password" data-role="button" data-icon="alert" iconpos="left" data-inline="true">Forgot
+        Password?</a>
+    </div>
+
+    <div data-role="content" class="ui-content-password">
+      <input type="password" id="passcode">
+
+      <div data-role="controlgroup" data-type="horizontal">
+        <a data-role="button" onclick="">1</a>
+        <a data-role="button" onclick="">2</a>
+        <a data-role="button" onclick="">3</a>
       </div>
 
-      <div data-role="main" class="ui-content">
-        <p>Sample text in the content</p>
+      <div data-role="controlgroup" data-type="horizontal">
+        <a data-role="button" onclick="">4</a>
+        <a data-role="button" onclick="">5</a>
+        <a data-role="button" onclick="">6</a>
       </div>
 
-      <div data-role="footer">
-        <p>
-          Sample text in the footer. <small>This is small footer text.</small>
-        </p>
+      <div data-role="controlgroup" data-type="horizontal">
+        <a data-role="button" onclick="">7</a>
+        <a data-role="button" onclick="">8</a>
+        <a data-role="button" onclick="">9</a>
       </div>
-    </div>    
-    
-    <!-- TODO: About Page -->
 
-    
-    <!-- TODO: Disclaimer Page -->
+      <div data-role="controlgroup" data-type="horizontal">
+        <a data-role="button" onclick="">0</a>
+        <a data-role="button" onclick="">Delete</a>
+      </div>
 
-    
-    <!-- TODO: User Information/Profile Page -->
+      <div data-role="controlgroup" data-type="horizontal">
+        <a data-role="button" href="#disclaimer-page">Enter</a>
+      </div>
+
+    </div>
+
+    <div data-role="footer" class="login-page-footer" data-theme="b">
+
+      <div>
+        <p><a href="#page-about" id="login-about-page-link" data-role"button">About</a></p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TODO: About Page -->
+  <div data-role="page" id="page-about" class="page-about">
+    <div data-role="header" data-theme="b">
+      <h1>About</h1>
+    </div>
+
+    <div data-role="main" class="ui-content-about">
+      <h2>Body Mass Index Tracker</h2>
+      <p>Body mass index (BMI) is a value derived from the mass (weight) and height of a person. The BMI is defined as
+        the body mass divided by the square of the body height. A BMI between 18.5 and 25 kg/m² indicates a normal
+        weight. A BMI of less than 18.5 kg/m² is considered underweight. A BMI between 25 kg/m² and 29.9 kg/m² is
+        considered overweight. A BMI of 30 kg/m² or higher is considered obese. </p>
+
+      <p>The purpose of this application is to help monitor an individuals BMI and track their progress.</p>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p><a href="#login-page" id="login-about-page-link">Login</a></p>
+    </div>
+  </div>
+
+  <!-- TODO: Disclaimer Page -->
+  <div data-role="page" id="disclaimer-page" data-close-btn="none">
+    <div data-role="header" data-theme="b">
+      <h1>Disclaimer</h1>
+    </div>
+
+    <div data-role="content" class="disclaimer-page">
+      <p>This tool does not provide medical advice, It is intended for informational purposes only. It is not a
+        substitute for professional medical advice, diagnosis or treatment. Never ignore professional medical advice in
+        seeking treatment. If you think you may have a medical emergency, immediately call your doctor or dial 911.
+        Select 'yes' if you understand and agree.</p>
+    </div>
+
+    <div>
+      <a href="#page-user-info" id="noticeYes" data-role="button" data-icon="check" data-mini="true">Yes</a>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
+
+  <!--About Page 2-->
+
+  <div data-role="page" id="page-about2" class="page-about">
+    <div data-role="header" data-theme="b">
+      <h1>About</h1>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+    </div>
+
+    <div data-role="main" class="ui-content-about">
+      <h1>Body Mass Index Tracker</h1>
+      <p>Body mass index (BMI) is a value derived from the mass (weight) and height of a person. The BMI is defined as
+        the body mass divided by the square of the body height. A BMI between 18.5 and 25 kg/m² indicates a normal
+        weight. A BMI of less than 18.5 kg/m² is considered underweight. A BMI between 25 kg/m² and 29.9 kg/m² is
+        considered overweight. A BMI of 30 kg/m² or higher is considered obese. </p>
+
+      <p>The purpose of this application is to help monitor an individuals BMI and track their progress.</p>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p><br></p>
+    </div>
+  </div>
+
+  <!-- TODO: Disclaimer Page -->
+  <div data-role="page" id="disclaimer-page" data-close-btn="none">
+    <div data-role="header" data-theme="b">
+      <h1>Disclaimer</h1>
+    </div>
+
+    <div data-role="content" class="disclaimer-page">
+      <p>This tool does not provide medical advice, It is intended for informational purposes only. It is not a
+        substitute for professional medical advice, diagnosis or treatment. Never ignore professional medical advice in
+        seeking treatment. If you think you may have a medical emergency, immediately call your doctor or dial 911.
+        Select 'yes' if you understand and agree.</p>
+    </div>
+
+    <div>
+      <a href="#page-menu" id="noticeYes" data-role="button" data-icon="check" data-mini="true">Yes</a>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
+
+  <!-- TODO: Create Account -->
+  <div data-role="page" id="page-password">
+    <div data-role="header" data-theme="b">
+      <h1>Create Password</h1>
+      <a href="#login-page" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Login</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+      <form>
+        <div data-role="fieldcontain">
+          <label>Password</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Confirm Password</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Create Security question</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Security Question Answer</label>
+          <input type="text">
+        </div>
 
 
-    <!-- TODO: Menu Page -->
+        <a href="#login-page" data-role="button" data-mini="true" data-theme="b">Submit</a>
+      </form>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
+
+  <!-- TODO: Forgot Password Page -->
+  <div data-role="page" id="page-forgot-password">
+    <div data-role="header" data-theme="b">
+      <h1>Create Password</h1>
+      <a href="#login-page" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Login</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+      <form>
+        <div data-role="fieldcontain">
+          <label>Password</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Confirm Password</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Security Question Go's Here</label>
+          <input type="text">
+        </div>
 
 
-    <!-- TODO: Records Page -->
+        <a href="#login-page" data-role="button" data-mini="true" data-theme="b">Submit</a>
+      </form>
+    </div>
 
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
 
-    <!-- TODO: Record Form Page -->
+  <!-- TODO: User Information/Profile Page -->
+  <div data-role="page" id="page-user-info">
+    <div data-role="header" data-theme="b">
+      <h1>User Information</h1>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
 
+    <div data-role="main" class="ui-content">
+      <form>
+        <div data-role="fieldcontain">
+          <label>First Name</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Last Name</label>
+          <input type="text">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Date Of Birth</label>
+          <input type="date">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Height In Feet</label>
+          <input type="number">
+        </div>
+        <div data-role="fieldcontain">
+          <label>Height In Inches</label>
+          <input type="number">
+        </div>
 
-    <!-- TODO: Graph Page -->
+        <a href="#page-menu" data-role="button" data-mini="true" data-theme="b">Submit</a>
+      </form>
+    </div>
 
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
 
-    <!-- TODO: Advice Page -->
+  <!-- TODO: Menu Page -->
+  <div data-role="page" id="page-menu">
+    <div data-role="header" data-theme="b">
+      <h1>Menu</h1>
+      <a href="#login-page" data-role="button" data-icon="lock" iconpos="left" data-inline="true">Logout</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div data-role="content" class="ui-content-menu">
+      <div data-role="controlgroup" data-theme="b">
+        <a data-role="button" href="#page-record-form">Record Your BMI</a>
+        <a data-role="button" href="#page-graph">BMI Graph</a>
+        <a data-role="button" href="#page-user-info">User Information</a>
+        <a data-role="button" href="#page-records">Records Page</a>
+        <a data-role="button" href="#page-advice">Advice/Suggestions</a>
+      </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
+
+  <!-- TODO: Records Page -->
+  <div data-role="page" id="page-records">
+    <div data-role="header" data-theme="b">
+      <h1>Records Page</h1>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
+
+    <div data-role="content" class="ui-content-page-records">
+      <div>
+        <table class="user-Info-Table">
+          <h2>User Information</h2>
+          <tr>
+            <th id="user-info-table-cell">First Name</th>
+            <th id="user-info-table-cell">Last Name</th>
+            <th id="user-info-table-cell">Date Of Birth</th>
+            <th id="user-info-table-cell">Height In Feet</th>
+            <th id="user-info-table-cell">Height In Inches</th>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <div class="results-table">
+        <table>
+          <tr>
+            <th id="results-table-cell">Date</th>
+            <th id="results-table-cell">BMI</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- TODO: Record Form Page -->
+  <div data-role="page" id="page-record-form">
+    <div data-role="header" data-theme="b">
+      <h1>Record Form Page</h1>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
+    <div data-role="main" class="ui-content-record-form">
+      <form>
+        <div data-role="fieldcontain">
+          <p>Date</p>
+          <input type="date">
+        </div>
+        <div data-role="fieldcontain">
+          <p>Weight in lbs</p>
+          <input type="number">
+        </div>
+        <a href="#page-menu" data-role="button" data-theme="b">Submit</a>
+      </form>
+    </div>
+
+    <div data-role="footer" data-type="horizontal" data-theme="b" class="page-record-form-links">
+      <p>
+        <br>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- TODO: Graph Page -->
+  <div data-role="page" id="page-graph">
+    <div data-role="header" data-theme="b">
+      <h1>BMI Graph</h1>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
+
+    <div data-role="main" class="ui-content-graph">
+      <div class="graph-page-panel">
+        <div class="panel-heading">
+          <h3>BMI vs Date</h3>
+        </div>
+        <div class="panel-body">
+          <canvas id="graphCanvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
+
+  <!-- TODO: Advice Page -->
+  <div data-role="page" id="page-advice">
+    <div data-role="header" data-theme="b">
+      <h1>BMI Advice and Suggestions</h1>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+    </div>
+
+    <div data-role="main" class="ui-content-graph">
+      <div class="graph-page-panel">
+        <div class="panel-heading">
+          <h3>BMI vs Date</h3>
+        </div>
+        <div class="panel-body">
+          <canvas id="graphCanvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
+        </div>
+      </div>
+      <div>
+        <H3>If BMI is under 18.5 kg/m², what should I do?</H3>
+        <p>Begin by exercising regularly and slightly increasing your calorie intake. According to the Academy of
+          Nutrition and Dietetics, increasing your calories by at least 200 per day can help you gain lean muscle mass
+          in a healthy way.</p>
+        <H3>If BMI is above 18.5 kg/m² and 25 kg/m², what should I do?</H3>
+        <p>In theory you are healthy and you are neither obesse or malnourished, but as stated above exercise with a
+          healthy caloric intake is needed to stay within these BMI ranges. </p>
+        <H3>If BMI is above 25.0 kg/m², what should I do?</H3>
+        <p>A high BMI theoretically means you are obesse and need to drop your BMI levels. Exercising regularly with a
+          managed healthy diet and tracking claorie intake will lead to promising results.</p>
+      </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+      <p>
+        <br>
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -1,5 +1,58 @@
 /*
-  Name: 
-  Date: 
-  Assignment: 
+  Name: Brannon
+  Date: 08/04/21
+  Assignment: Create a BMI tracker.
 */
+.login-page{
+  background-color: #ededed;
+}
+.ui-content-password{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.delete-button{
+  margin-left: 80%;
+}
+#login-about-page-link{
+  color: #ededed;
+  text-decoration: none;
+  font-size: larger;
+  margin-left: 10%;
+}
+.page-about{
+  background-color: #ededed;
+}
+.ui-content-about{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.ui-content-graph{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.ui-content-page-records{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.ui-content-page-records table{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.user-Info_Table{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
