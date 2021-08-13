@@ -15,12 +15,13 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
   <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <script src="scripts/bootstrap.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -386,13 +387,15 @@
     </div>
 
     <div data-role="main" class="ui-content-graph">
-      <div class="graph-page-panel">
+      <div style="margin:42px">
+       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3>BMI vs Date</h3>
+          <h3 class = "panel-title">BMI vs Date</h3>
         </div>
         <div class="panel-body">
-          <canvas id="graphCanvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
+          <canvas id="graphCanvas" width="500" height="500"></canvas>
         </div>
+       </div>
       </div>
     </div>
 
@@ -412,20 +415,23 @@
     </div>
 
     <div data-role="main" class="ui-content-graph">
-      <div class="graph-page-panel">
+      <div style="margin:42px">
+       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3>BMI vs Date</h3>
+          <h3 class = "panel-title">BMI vs Date</h3>
         </div>
         <div class="panel-body">
-          <canvas id="graphCanvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
+          <canvas id="graphCanvas" width="500" height="500"></canvas>
         </div>
+       </div>
       </div>
+    
       <div>
         <H3>If BMI is under 18.5 kg/m², what should I do?</H3>
         <p>Begin by exercising regularly and slightly increasing your calorie intake. According to the Academy of
           Nutrition and Dietetics, increasing your calories by at least 200 per day can help you gain lean muscle mass
           in a healthy way.</p>
-        <H3>If BMI is above 18.5 kg/m² and 25 kg/m², what should I do?</H3>
+        <H3>If BMI is above 18.5 kg/m² and under 25 kg/m², what should I do?</H3>
         <p>In theory you are healthy and you are neither obesse or malnourished, but as stated above exercise with a
           healthy caloric intake is needed to stay within these BMI ranges. </p>
         <H3>If BMI is above 25.0 kg/m², what should I do?</H3>
@@ -440,8 +446,6 @@
       </p>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 
 </html>
