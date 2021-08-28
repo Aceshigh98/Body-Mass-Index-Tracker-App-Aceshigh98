@@ -1,7 +1,7 @@
 /*
   Name: Brannon
   Date: 08/04/21
-  Assignment: Create a BMI tracker.
+  Assignment: Create a BMI calculator
 */
 .login-page{
   background-color: #ededed;
@@ -31,7 +31,7 @@
   text-align: center;
 }
 .ui-content-graph{
-  width:80%;
+  width:100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -43,17 +43,23 @@
   text-align: center;
 }
 .ui-content-page-records table{
-  width:80%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  width:100%;
+  text-align: left;
   border: 1px solid black;
   border-collapse: collapse;
 }
-.user-Info_Table{
-  width:80%;
-  margin-left: auto;
-  margin-right: auto;
+.ui-content-page-records table, th, tr{
+  
+  display: table;
+  width: 100%;
+  table-layout: fixed;
   text-align: center;
+  border-collapse: collapse;
 }
-
+.ui-content table, th, td{
+  padding:16px;
+  font-weight: bolder;
+}
+td:nth-child(even) {
+  background-color:darkgoldenrod;
+}

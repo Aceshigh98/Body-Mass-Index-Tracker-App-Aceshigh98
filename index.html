@@ -13,12 +13,16 @@
   <title>BMI Tracker</title>
 
   <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
 
   <!-- JavaScript -->
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="scripts/script.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -29,39 +33,41 @@
   <div data-role="page" id="login-page" class="login-page">
     <div data-role="header" data-theme="b">
       <h1>Login</h1>
-      <a href="#page-password" data-role="button" data-icon="lock" iconpos="left" data-inline="true">Create Password</a>
-      <a href="#page-forgot-password" data-role="button" data-icon="alert" iconpos="left" data-inline="true">Forgot
+      <a href="#page-password" data-role="button" data-icon="lock" iconpos="left" data-inline="true">Create Account</a>
+      <a href="#page-forgot-password" data-role="button" data-icon="alert" iconpos="left" data-inline="true"
+        onclick="securityQuestionLabel()">Forgot
         Password?</a>
     </div>
 
     <div data-role="content" class="ui-content-password">
-      <input type="password" id="passcode">
+      <input type="password" id="passcode" data-role="field-contain" onfocus=this.value='' />
 
       <div data-role="controlgroup" data-type="horizontal">
-        <a data-role="button" onclick="">1</a>
-        <a data-role="button" onclick="">2</a>
-        <a data-role="button" onclick="">3</a>
+        <a data-role="button" onclick="addValueToPassword(1)">1</a>
+        <a data-role="button" onclick="addValueToPassword(2)">2</a>
+        <a data-role="button" onclick="addValueToPassword(3)">3</a>
       </div>
 
       <div data-role="controlgroup" data-type="horizontal">
-        <a data-role="button" onclick="">4</a>
-        <a data-role="button" onclick="">5</a>
-        <a data-role="button" onclick="">6</a>
+        <a data-role="button" onclick="addValueToPassword(4)">4</a>
+        <a data-role="button" onclick="addValueToPassword(5)">5</a>
+        <a data-role="button" onclick="addValueToPassword(6)">6</a>
       </div>
 
       <div data-role="controlgroup" data-type="horizontal">
-        <a data-role="button" onclick="">7</a>
-        <a data-role="button" onclick="">8</a>
-        <a data-role="button" onclick="">9</a>
+        <a data-role="button" onclick="addValueToPassword(7)">7</a>
+        <a data-role="button" onclick="addValueToPassword(8)">8</a>
+        <a data-role="button" onclick="addValueToPassword(9)">9</a>
       </div>
 
       <div data-role="controlgroup" data-type="horizontal">
-        <a data-role="button" onclick="">0</a>
-        <a data-role="button" onclick="">Delete</a>
+        <a data-role="button" onclick="addValueToPassword(0)">0</a>
+        <a data-role="button" onclick="addValueToPassword('bksp')">Delete</a>
       </div>
 
       <div data-role="controlgroup" data-type="horizontal">
-        <a data-role="button" href="#disclaimer-page">Enter</a>
+        <input type="submit" data-role="button" data-mini="true" data-theme="b" id="create-user-submit" value="Enter"
+          data-icon="check" onclick="checkLogin()">
       </div>
 
     </div>
@@ -158,7 +164,7 @@
     </div>
 
     <div>
-      <a href="#page-menu" id="noticeYes" data-role="button" data-icon="check" data-mini="true">Yes</a>
+      <a id="noticeYes" data-role="button" data-icon="check" data-mini="true" onclick="acceptDisclaimer()">Yes</a>
     </div>
 
     <div data-role="footer" data-theme="b">
@@ -177,26 +183,26 @@
     </div>
 
     <div data-role="main" class="ui-content">
-      <form>
+      <form id="acount-form">
         <div data-role="fieldcontain">
           <label>Password</label>
-          <input type="text">
+          <input type="password" id="new-password" data-role="field-contain" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Confirm Password</label>
-          <input type="text">
+          <input type="password" id="confirm-password" data-role="field-contain" value="" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Create Security question</label>
-          <input type="text">
+          <input type="text" id="security-question" data-role="field-contain" value="" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Security Question Answer</label>
-          <input type="text">
+          <input type="text" id="security-answer" data-role="field-contain" value="" onfocus=this.value=''>
         </div>
 
-
-        <a href="#login-page" data-role="button" data-mini="true" data-theme="b">Submit</a>
+        <input type="submit" data-role="button" data-mini="true" data-theme="b" id="create-user-submit" value="Submit"
+          data-icon="check" onclick="submitAccountForm()">
       </form>
     </div>
 
@@ -219,19 +225,20 @@
       <form>
         <div data-role="fieldcontain">
           <label>Password</label>
-          <input type="text">
+          <input type="text" id="sec-new-password" data-role="field-contain" value="" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Confirm Password</label>
-          <input type="text">
+          <input type="text" id="sec-confirm-password" data-role="field-contain" value="" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
-          <label>Security Question Go's Here</label>
-          <input type="text">
+          <label id="sec-question-label"></label>
+          <input type="text" id="sec-answer" data-role="field-contain" onfocus=this.value=''>
         </div>
 
 
-        <a href="#login-page" data-role="button" data-mini="true" data-theme="b">Submit</a>
+        <input type="submit" data-role="button" data-mini="true" data-theme="b" id="create-user-submit" value="Submit"
+          data-icon="check" onclick="forgotPassword()">
       </form>
     </div>
 
@@ -246,7 +253,7 @@
   <div data-role="page" id="page-user-info">
     <div data-role="header" data-theme="b">
       <h1>User Information</h1>
-      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
+      <a data-role="button" data-icon="bars" iconpos="left" data-inline="true" onclick="checkIfNull()">Menu</a>
       <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
     </div>
 
@@ -254,26 +261,26 @@
       <form>
         <div data-role="fieldcontain">
           <label>First Name</label>
-          <input type="text">
+          <input type="text" id="first-name" data-role="field-contain" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Last Name</label>
-          <input type="text">
+          <input type="text" id="last-name" data-role="field-contain" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Date Of Birth</label>
-          <input type="date">
+          <input type="date" id="date-of-birth" data-role="field-contain" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Height In Feet</label>
-          <input type="number">
+          <input type="number" id="feet" data-role="field-contain" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <label>Height In Inches</label>
-          <input type="number">
+          <input type="number" id="inches" data-role="field-contain" onfocus=this.value=''>
         </div>
 
-        <a href="#page-menu" data-role="button" data-mini="true" data-theme="b">Submit</a>
+        <a data-role="button" data-mini="true" data-theme="b" onclick="setUser()">Update</a>
       </form>
     </div>
 
@@ -295,10 +302,10 @@
     <div data-role="content" class="ui-content-menu">
       <div data-role="controlgroup" data-theme="b">
         <a data-role="button" href="#page-record-form">Record Your BMI</a>
-        <a data-role="button" href="#page-graph">BMI Graph</a>
+        <a data-role="button" href="#page-graph" onclick="drawGraph1()">BMI Graph</a>
         <a data-role="button" href="#page-user-info">User Information</a>
-        <a data-role="button" href="#page-records">Records Page</a>
-        <a data-role="button" href="#page-advice">Advice/Suggestions</a>
+        <a data-role="button" href="#page-records" onclick="createRecordTable()">Records Page</a>
+        <a data-role="button" href="#page-advice" onclick="drawGraph2()">Advice/Suggestions</a>
       </div>
     </div>
 
@@ -313,33 +320,44 @@
   <div data-role="page" id="page-records">
     <div data-role="header" data-theme="b">
       <h1>Records Page</h1>
-      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true">Menu</a>
-      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true">Info</a>
+      <a href="#page-menu" data-role="button" data-icon="bars" iconpos="left" data-inline="true"
+        onclick="clearTable()">Menu</a>
+      <a href="#page-about2" data-role="button" data-icon="info" iconpos="left" data-inline="true"
+        onclick="clearTable()">Info</a>
     </div>
 
     <div data-role="content" class="ui-content-page-records">
       <div>
-        <table class="user-Info-Table">
+        <table id="user-Info-Table">
           <h2>User Information</h2>
           <tr>
-            <th id="user-info-table-cell">First Name</th>
-            <th id="user-info-table-cell">Last Name</th>
-            <th id="user-info-table-cell">Date Of Birth</th>
-            <th id="user-info-table-cell">Height In Feet</th>
-            <th id="user-info-table-cell">Height In Inches</th>
+            <td id="user-info-table-cell">First Name</td>
+            <td id="user-info-table-cell">Last Name</td>
+            <td id="user-info-table-cell">Date Of Birth</td>
+            <td id="user-info-table-cell">Feet</td>
+            <td id="user-info-table-cell">Inches</td>
           </tr>
         </table>
+        <table id="table-info"></table>
+        <a href="#page-user-info" data-role="button" data-icon="edit" iconpos="left" data-mini="true" data-theme="b"
+          onclick="clearTable()">Update</a>
       </div>
       <br>
       <div class="results-table">
         <table>
           <tr>
-            <th id="results-table-cell">Date</th>
-            <th id="results-table-cell">BMI</th>
+            <td id="results-table-cell">Date</td>
+            <td id="results-table-cell">BMI</td>
           </tr>
+        </table>
+        <table id="table-results">
         </table>
       </div>
     </div>
+    <a data-role="button" data-icon="edit" iconpos="left" data-mini="true" data-theme="b" onclick="clearRecords()">Clear
+      Records</a>
+    <a href="#page-record-form" data-role="button" data-icon="edit" iconpos="left" data-mini="true" data-theme="b"
+      onclick="clearTable()">Add Record</a>
 
     <div data-role="footer" data-theme="b">
       <p>
@@ -360,13 +378,13 @@
       <form>
         <div data-role="fieldcontain">
           <p>Date</p>
-          <input type="date">
+          <input type="date" id="date" data-role="field-contain" onfocus=this.value=''>
         </div>
         <div data-role="fieldcontain">
           <p>Weight in lbs</p>
-          <input type="number">
+          <input type="number" id="weight" data-role="field-contain" onfocus=this.value=''>
         </div>
-        <a href="#page-menu" data-role="button" data-theme="b">Submit</a>
+        <a href="#page-menu" data-role="button" data-theme="b" onclick="setRecord()">Submit</a>
       </form>
     </div>
 
@@ -388,14 +406,14 @@
 
     <div data-role="main" class="ui-content-graph">
       <div style="margin:42px">
-       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class = "panel-title">BMI vs Date</h3>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">BMI vs Date</h3>
+          </div>
+          <div class="panel-body">
+            <canvas id="graphCanvas" width="500" height="500" style="border: 1px solid #000"></canvas>
+          </div>
         </div>
-        <div class="panel-body">
-          <canvas id="graphCanvas" width="500" height="500"></canvas>
-        </div>
-       </div>
       </div>
     </div>
 
@@ -416,16 +434,16 @@
 
     <div data-role="main" class="ui-content-graph">
       <div style="margin:42px">
-       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class = "panel-title">BMI vs Date</h3>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">BMI vs Date</h3>
+          </div>
+          <div class="panel-body">
+            <canvas id="graphCanvas2" width="500" height="500"></canvas>
+          </div>
         </div>
-        <div class="panel-body">
-          <canvas id="graphCanvas" width="500" height="500"></canvas>
-        </div>
-       </div>
       </div>
-    
+
       <div>
         <H3>If BMI is under 18.5 kg/m², what should I do?</H3>
         <p>Begin by exercising regularly and slightly increasing your calorie intake. According to the Academy of
